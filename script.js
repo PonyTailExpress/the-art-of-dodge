@@ -28,7 +28,7 @@ function startGame() {
   player = new Player(); // Create player bar
 
   gameInterval = setInterval(() => {
-    new Obstacle(); // Create obstacles every second
+    new Obstacle(player); // Create obstacles every second
   }, 1000);
 }
 
