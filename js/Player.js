@@ -5,7 +5,7 @@ class Player {
     this.element.classList.add("player");
     document.getElementById("game-area").appendChild(this.element);
 
-    this.positionX = 350; // Start in the center
+    this.positionX = 450; // Start in the center
     this.speed = 20;
     this.width = 100;
     this.move();
@@ -19,8 +19,7 @@ class Player {
   }
 
   moveRight() {
-    if (this.positionX < 800 - this.width - 5) {
-      // Ensures it reaches the right edge
+    if (this.positionX + this.width < 894) {
       this.positionX += this.speed;
       this.move();
     }
