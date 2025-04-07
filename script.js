@@ -29,25 +29,14 @@ function startGame() {
   player = new Player(); // Create player bar
 
   gameInterval = setInterval(() => {
-    new Obstacle(player); // Create obstacles every second
+    new Obstacle(player);
   }, 1000);
 }
 
-// function endGame() {
-//   isGameRunning = false;
-//   clearInterval(gameInterval);
-//   player.remove();
-//   //   document.getElementById("start-button").style.display = "block"; // Show button again
-//   //   document.getElementById("game-over-banner").style.display = "block";
-//   // const gameOverBanner = document.getElementById("game-over-banner");
-//   gameOverBanner.style.display = "block"; // Show Game Over banner
-
-//   // Delay showing start button for 2 seconds
-//   setTimeout(() => {
-//     gameOverBanner.style.display = "none";
-//     document.getElementById("start-button").style.display = "block"; // Show button again
-//   }, 2000);
-// }
+function updateScoreDisplay() {
+  const scoreDisplay = document.getElementById("score-display");
+  scoreDisplay.textContent = "Points: " + player.points;
+}
 
 function endGame() {
   isGameRunning = false;

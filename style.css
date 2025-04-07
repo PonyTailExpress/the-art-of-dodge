@@ -55,9 +55,9 @@ header {
 }
 
 #player {
-    width: 100px;
-    height: 30px;
-    background-color: rgb(0, 8, 255);
+    /* width: 100px;
+    height: 30px; */
+    /* background-color: rgb(0, 8, 255); */
     position: absolute;
     bottom: 20px;
     left: 450px;
@@ -100,4 +100,13 @@ header {
     text-align: center;
     font-weight: bold;
     box-shadow: 0 0 20px red;
+}
+
+#score-display {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
 }
