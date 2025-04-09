@@ -16,6 +16,11 @@ document.addEventListener(
       player.richSound.currentTime = 0;
     });
 
+    player.magaSound.play().then(() => {
+      player.magaSound.pause();
+      player.magaSound.currentTime = 0;
+    });
+
     player.bidenSound.play().then(() => {
       player.bidenSound.pause();
       player.bidenSound.currentTime = 0;
@@ -61,7 +66,7 @@ function startGame() {
 
 function updateScoreDisplay() {
   const scoreDisplay = document.getElementById("score-display");
-  scoreDisplay.textContent = "Points: " + player.points;
+  scoreDisplay.textContent = "Dollar Score: " + player.points;
 }
 
 function endGame() {
