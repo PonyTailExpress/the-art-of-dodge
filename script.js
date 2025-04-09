@@ -8,6 +8,32 @@ document.getElementById("start-button").addEventListener("click", () => {
   }
 });
 
+document.addEventListener(
+  "click",
+  () => {
+    player.richSound.play().then(() => {
+      player.richSound.pause();
+      player.richSound.currentTime = 0;
+    });
+
+    player.bidenSound.play().then(() => {
+      player.bidenSound.pause();
+      player.bidenSound.currentTime = 0;
+    });
+
+    player.hillarySound.play().then(() => {
+      player.hillarySound.pause();
+      player.hillarySound.currentTime = 0;
+    });
+
+    player.tacoSound.play().then(() => {
+      player.tacoSound.pause();
+      player.tacoSound.currentTime = 0;
+    });
+  },
+  { once: true }
+);
+
 document.addEventListener("keydown", (event) => {
   if (player) {
     if (event.key === "ArrowLeft") {

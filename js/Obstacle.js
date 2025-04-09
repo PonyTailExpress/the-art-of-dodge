@@ -7,28 +7,29 @@ class Obstacle {
 
     const obstacleImages = [
       "assets/dollar.png", // Dollar note image
-      "assets/biden.png", // Biden head image (example, you can use any image)
-      "assets/taco.png", // Taco image (another example)
-      "assets/hillary.png", // Hillary head image (example, you can use any image)
+      "assets/biden.png", // Biden head image
+      "assets/taco.png", // Taco image
+      "assets/hillary.png", // Hillary head image
     ];
 
     // Select a random image from the list
     const randomImage =
       obstacleImages[Math.floor(Math.random() * obstacleImages.length)];
-    this.element.src = randomImage; // Set the randomly selected image
+    this.element.src = randomImage;
 
-    // Set the width and height for consistency
+    // Set size of the obstacle
     this.element.style.width = "50px";
     this.element.style.height = "50px";
 
-    // Position it randomly within the game area
-    this.element.style.left = `${Math.random() * 750}px`; // Random starting X position
-    this.element.style.top = "0px"; // Starting Y position (top of the game area)
+    // Set random horizontal position
+    this.element.style.left = `${Math.random() * 750}px`;
+    this.element.style.top = "0px";
 
-    document.getElementById("game-area").appendChild(this.element); // Append the image directly to the game area
+    // Add to game area
+    document.getElementById("game-area").appendChild(this.element);
 
-    this.positionY = 0; // Start at the top
-    this.speed = 2; // Falling speed
+    this.positionY = 0;
+    this.speed = 2;
     this.move();
   }
 
@@ -47,16 +48,25 @@ class Obstacle {
     ) {
       console.log("Collision detected!");
 
-      // If the obstacle is the dollar note, reward the player with a point and change the face to kiss
       if (this.element.src.includes("dollar.png")) {
-        this.player.addPoint(); // Award a point if the obstacle is a dollar note
-        this.player.showKissFace(); // Change to kiss face when hitting dollar
+        this.player.addPoint();
+        this.player.showKissFace();
+        this.player.playRichSound();
+      } else if (this.element.src.includes("biden.png")) {
+        this.player.showShockFace();
+        this.player.playBidenSound();
+      } else if (this.element.src.includes("hillary.png")) {
+        this.player.showShockFace();
+        this.player.playHillarySound();
+      } else if (this.element.src.includes("taco.png")) {
+        this.player.showShockFace();
+        this.player.playTacoSound();
       } else {
-        this.player.showShockFace(); // Show shock face for other collisions (Biden, Taco, etc.)
+        this.player.showShockFace();
       }
 
       this.element.remove(); // Remove the obstacle after collision
-      this.player.decreaseEnergy(); // Call method to decrease player energy
+      this.player.decreaseEnergy(); // Decrease player energy
       return true;
     }
 
@@ -70,7 +80,6 @@ class Obstacle {
     if (this.checkCollision()) return;
 
     if (this.positionY > 600) {
-      // Remove the obstacle if it goes off the screen
       this.element.remove();
     } else {
       requestAnimationFrame(() => this.move());

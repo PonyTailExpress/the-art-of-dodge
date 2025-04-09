@@ -21,6 +21,12 @@ class Player {
     this.energy = 100;
     this.points = 0;
 
+    // Sound effect
+    this.richSound = new Audio("assets/donald-trump-im-really-rich.mp3");
+    this.bidenSound = new Audio("assets/biden-skill-issue.mp3");
+    this.hillarySound = new Audio("assets/hilary-sick-n-tired.mp3");
+    this.tacoSound = new Audio("assets/aiaiai-mexican.mp3");
+
     // Score display setup
     this.scoreDisplay = document.getElementById("score-display");
     if (!this.scoreDisplay) {
@@ -90,6 +96,34 @@ class Player {
     setTimeout(() => {
       this.element.src = "assets/trump.png";
     }, 500);
+  }
+
+  playRichSound() {
+    this.richSound.currentTime = 0;
+    this.richSound.play().catch((err) => {
+      console.error("Sound failed to play:", err);
+    });
+  }
+
+  playBidenSound() {
+    this.bidenSound.currentTime = 0;
+    this.bidenSound.play().catch((err) => {
+      console.error("Biden sound failed:", err);
+    });
+  }
+
+  playHillarySound() {
+    this.hillarySound.currentTime = 0;
+    this.hillarySound.play().catch((err) => {
+      console.error("Hillary sound failed:", err);
+    });
+  }
+
+  playTacoSound() {
+    this.tacoSound.currentTime = 0;
+    this.tacoSound.play().catch((err) => {
+      console.error("Taco sound failed:", err);
+    });
   }
 
   remove() {
