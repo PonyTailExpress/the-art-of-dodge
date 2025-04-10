@@ -35,6 +35,10 @@ document.addEventListener(
       player.tacoSound.pause();
       player.tacoSound.currentTime = 0;
     });
+    player.fakeNewsSound.play().then(() => {
+      player.fakeNewsSound.pause();
+      player.fakeNewsSound.currentTime = 0;
+    });
   },
   { once: true }
 );
