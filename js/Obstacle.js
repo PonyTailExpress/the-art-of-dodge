@@ -152,6 +152,7 @@ class Obstacle {
         this.player.addPoint();
         this.player.showKissFace();
         this.player.playMagaSound();
+        this.player.addMagaCap();
       }
 
       this.element.remove();
