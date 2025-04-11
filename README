@@ -1,0 +1,52 @@
+# 🇺🇸 The Art of the Dodge
+
+**The Art of the Dodge** is a fast-paced browser game where you play as Donald Trump, dodging political pitfalls and collecting dollars on your quest to _Make America Great Again_. Can you collect all four MAGA caps and survive the chaos?
+
+A high-stakes moments from The Art of the Dodge game:
+
+### Game Start
+
+![Start screen](./assets/Game-3.png)
+
+### Mid-Game Action
+
+![Dodging chaos](./assets/Game-2.png)
+
+### Game Win
+
+![Start screen](./assets/Game-3.png)
+
+## 🎮 How to Play
+
+**OBJECTIVE**  
+Collect as many 💵 **dollars** as possible while trying to **Make America Great Again** by collecting four **MAGA caps**.
+
+**AVOID**  
+🚫 Joe Biden Head
+🚫 Hillary Clinton Head
+🚫 Mexican Taco Man
+🚫 Fake News
+
+Each of these will cost you lives, so stay sharp!
+
+**CONTROLS**  
+Use the **←** and **→** arrow keys to move Trump left and right.
+
+**TIP**  
+Good luck — **Trump is counting on you!**
+
+---
+
+## 🚀 Demo
+
+Check out the live version here:  
+👉 [Play The Art of the Dodge on GitHub Pages](https://ponytailexpress.github.io/the-art-of-dodge/)
+
+---
+
+## 🛠️ Run Locally
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/your-repo-name.git
+   ```
