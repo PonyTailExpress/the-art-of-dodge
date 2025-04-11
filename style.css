@@ -32,40 +32,42 @@
 }
 
 /* General styling */
-body,
-html {
+body {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-image: url('/assets/wintery-sunburst.png');
+    background-size: cover;
+    /* Ensure the image covers the entire screen */
+    background-position: center center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Prevent tiling of the image */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    font-family: 'Press Start 2P', monospace;
+    /* Keep retro font style */
 }
 
 #dancing-trump-gif {
     position: absolute;
     top: 50%;
     right: 20px;
-    /* Slightly inward from the right */
     width: 250px;
-    /* Increase the size */
     height: auto;
     border: 6px solid #ff00ff;
-    /* Neon border */
     box-shadow: 0 0 15px #ff00ff;
-    /* Neon glow effect */
     z-index: 9999;
     animation: neonFlicker 1.5s infinite alternate;
-    /* Neon flicker animation */
     transform: translateY(-50%);
     visibility: visible;
     display: block;
     object-fit: contain;
 }
 
-
+  
 
 #life-bar-container {
     position: absolute;
@@ -100,10 +102,72 @@ header {
     margin-bottom: 20px;
 }
 
+.strike {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+}
+
+.strike::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 5px;
+    background-color: #ff00ff;
+    transform: translateY(-50%);
+
+
+}
+
 #main-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin: 20px 0;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 45px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 30px;
+
+    /* Neon glow effect */
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 25px #ff00ff,
+        0 0 30px #ff00ff,
+        0 0 35px #ff00ff;
+
+    /* Retro gradient background */
+    background: linear-gradient(45deg, #ff0077, #ff00ff, #8000ff, #00b2ff);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+
+    /* Additional padding and rounded corners */
+    padding: 10px;
+    border-radius: 15px;
+    border: 4px solid #ff00ff;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+}
+
+/* 80s Arcade background gradient animation */
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 #game-container {
@@ -115,18 +179,43 @@ header {
     padding-top: 50px;
 }
 
-#start-button {
+/* General Styling for the Star Button */
+.neon-button {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 15px 30px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 18px;
-    border: none;
+    font-size: 24px;
+    font-family: 'Press Start 2P', monospace;
+    color: #fff;
+    background-color: #ff00ff;
+    border: 4px solid #ff00ff;
+    border-radius: 50px;
+    text-align: center;
     cursor: pointer;
-    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+    animation: neonFlicker 1.5s infinite alternate;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect for more retro interaction */
+.neon-button:hover {
+    transform: scale(1.1) translate(-50%, -50%);
+    background-color: #ff77ff;
+    box-shadow: 0 0 25px #ff00ff, 0 0 35px #ff00ff, 0 0 45px #ff00ff;
+}
+
+/* Focus effect for accessibility */
+.neon-button:focus {
+    outline: none;
+    box-shadow: 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+}
+
+/* Active state to simulate pressing */
+.neon-button:active {
+    transform: scale(0.98) translate(-50%, -50%);
+    box-shadow: 0 0 10px #ff00ff;
 }
 
 #game-area {
@@ -181,14 +270,17 @@ header {
     box-shadow: 0 0 20px red;
 }
 
+
 #score-display {
     position: absolute;
     top: 10px;
     left: 10px;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
+    color: #FFD700;
+    font-size: 25px;
+    text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FF6347, 0 0 20px #FF6347;
+
 }
+
 
 #maga-cap-container {
     position: absolute;
