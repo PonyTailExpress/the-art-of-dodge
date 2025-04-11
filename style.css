@@ -36,7 +36,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-image: url('/assets/wintery-sunburst.png');
+    background-image: url('the-art-of-dodge/assets/wintery-sunburst.png');
     background-size: cover;
     /* Ensure the image covers the entire screen */
     background-position: center center;
