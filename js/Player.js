@@ -1,9 +1,8 @@
 class Player {
   constructor() {
-    // Create and append the player image
     this.element = document.createElement("img");
     this.element.id = "player";
-    this.element.src = "assets/trump-eyebrow.png"; // Default Trump image
+    this.element.src = "assets/trump-eyebrow.png";
     this.element.style.position = "absolute";
     this.element.style.bottom = "0px";
     this.element.style.left = "450px";
@@ -76,13 +75,12 @@ class Player {
   updateLifeBar() {
     const lifePercentage = (this.currentLife / this.maxLife) * 100;
     this.lifeBar.style.width = `${lifePercentage}%`;
-    if (lifePercentage > 50) {
-      this.lifeBar.style.backgroundColor = "#00FF00";
-    } else if (lifePercentage > 25) {
-      this.lifeBar.style.backgroundColor = "#FFFF00";
-    } else {
-      this.lifeBar.style.backgroundColor = "#FF0000";
-    }
+    this.lifeBar.style.backgroundColor =
+      lifePercentage > 50
+        ? "#00FF00"
+        : lifePercentage > 25
+        ? "#FFFF00"
+        : "#FF0000";
   }
 
   decreaseEnergy() {
@@ -100,7 +98,58 @@ class Player {
         .play()
         .catch((err) => console.error("Game Over music failed:", err));
 
-      endGame(); // ✅ FIXED: Call the actual endGame function
+      if (this.obstacleInterval) {
+        clearInterval(this.obstacleInterval);
+        this.obstacleInterval = null;
+      }
+
+      document.getElementById("game-area").innerHTML = "";
+
+      const gameOverContainer = document.createElement("div");
+      gameOverContainer.style.position = "absolute";
+      gameOverContainer.style.top = "50%";
+      gameOverContainer.style.left = "50%";
+      gameOverContainer.style.transform = "translate(-50%, -50%)";
+      gameOverContainer.style.textAlign = "center";
+      gameOverContainer.style.zIndex = "100";
+
+      const gameOverGif = document.createElement("img");
+      gameOverGif.src =
+        "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDJrZnY0c2N6dWowa3RoanRjNzM1MGVwNnVrdTVhd2IzZDN3M2M3cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rQIeezPUfRxgk/giphy.gif";
+      gameOverGif.style.width = "300px";
+      gameOverGif.style.height = "auto";
+      gameOverGif.style.border = "6px solid red";
+      gameOverGif.style.borderRadius = "12px";
+      gameOverGif.style.marginBottom = "20px";
+      gameOverGif.style.boxShadow = "0 0 30px red";
+
+      const gameOverText = document.createElement("div");
+      gameOverText.innerText = "Make Poop Great Again? Mission failed.";
+      gameOverText.style.fontSize = "28px";
+      gameOverText.style.color = "#FF3333";
+      gameOverText.style.fontWeight = "bold";
+      gameOverText.style.textShadow = "2px 2px 8px black";
+      gameOverText.style.maxWidth = "400px";
+      gameOverText.style.whiteSpace = "normal";
+      gameOverText.style.textAlign = "center";
+
+      const gameOverBanner = document.createElement("div");
+      gameOverBanner.innerText = "GAME OVER";
+      gameOverBanner.style.fontSize = "36px";
+      gameOverBanner.style.color = "#FFD700";
+      gameOverBanner.style.fontWeight = "bold";
+      gameOverBanner.style.textShadow = "0 0 10px red, 0 0 20px orange";
+      gameOverBanner.style.animation = "neonFlicker 1.5s infinite alternate";
+      gameOverBanner.style.marginTop = "10px";
+
+      gameOverContainer.appendChild(gameOverGif);
+      gameOverContainer.appendChild(gameOverText);
+      document.body.appendChild(gameOverContainer);
+
+      setTimeout(() => {
+        gameOverContainer.remove();
+        endGame(); // Make sure this is defined elsewhere
+      }, 3000);
     }
   }
 
@@ -220,6 +269,8 @@ class Player {
     }
     document.getElementById("game-area").innerHTML = "";
     console.log("Game Won!");
+
+    isGameRunning = false;
     document.getElementById("start-button").style.display = "block";
   }
 
