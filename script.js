@@ -35,7 +35,6 @@ document.addEventListener(
       player.tacoSound.pause();
       player.tacoSound.currentTime = 0;
     });
-
     player.fakeNewsSound.play().then(() => {
       player.fakeNewsSound.pause();
       player.fakeNewsSound.currentTime = 0;
@@ -56,13 +55,27 @@ document.addEventListener("keydown", (event) => {
 
 function startGame() {
   isGameRunning = true;
+
   document.getElementById("start-button").style.display = "none";
   document.getElementById("game-over-banner").style.display = "none";
 
+  // Clear the game area
   document.getElementById("game-area").innerHTML = "";
 
+  // Reset the MAGA cap container: Clear its content and reset visibility
+  const magaCapContainer = document.getElementById("maga-cap-container");
+  if (magaCapContainer) {
+    magaCapContainer.innerHTML = ""; // Clear all caps inside
+    magaCapContainer.style.visibility = "hidden"; // Hide the container (for the new game)
+  }
+
+  // Create a new player instance
   player = new Player();
 
+  // Reset MAGA cap count for the new game
+  player.magaCapCount = 0;
+
+  // Start the game loop for obstacles
   gameInterval = setInterval(() => {
     new Obstacle(player);
   }, 1000);
@@ -70,21 +83,15 @@ function startGame() {
   player.obstacleInterval = gameInterval;
 }
 
-function updateScoreDisplay() {
-  const scoreDisplay = document.getElementById("score-display");
-  scoreDisplay.textContent = "Dollar Score: " + player.points;
-}
-
 function endGame() {
   isGameRunning = false;
   clearInterval(gameInterval);
   player.remove();
 
-  // Clear remaining obstacles
-  document.getElementById("game-area").innerHTML = "";
-
+  // Show Game Over banner
   document.getElementById("game-over-banner").style.display = "block";
 
+  // Delay showing Start button for 2 seconds
   setTimeout(() => {
     document.getElementById("game-over-banner").style.display = "none";
     document.getElementById("start-button").style.display = "block";

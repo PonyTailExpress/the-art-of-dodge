@@ -36,7 +36,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-image: url('/assets/wintery-sunburst.png');
+    background-image: url('assets/wintery-sunburst.png');
     background-size: cover;
     /* Ensure the image covers the entire screen */
     background-position: center center;
@@ -71,7 +71,7 @@ body {
     font-size: 14px;
     margin-bottom: 8px;
     color: #00ffcc;
-} 
+}
 
 .highlight-label {
     color: #FFD700;
@@ -97,7 +97,7 @@ body {
     object-fit: contain;
 }
 
-  
+
 
 #life-bar-container {
     position: absolute;
@@ -320,7 +320,7 @@ header {
     color: rgb(32, 39, 237);
     font-family: "Press Start 2P", cursive;
     text-align: center;
-    z-index: 20;
+    z-index: auto;
 }
 
 #maga-cap-label {
@@ -339,4 +339,3 @@ header {
     height: 50px;
     object-fit: contain;
 }
-
